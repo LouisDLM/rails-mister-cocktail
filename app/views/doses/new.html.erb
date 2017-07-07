@@ -1,7 +1,1 @@
-<div class="container">
-  <%= simple_form_for [@cocktail, @dose] do |f| %>
-    <%= f.input :description, placeholder: "Amount" %>
-    <%= f.input :ingredient_id, collection: @ingredients %>
-    <%= f.button :submit, class: "btn btn-primary"  %>
-  <% end %>
-</div>
+<%= render "form" %>

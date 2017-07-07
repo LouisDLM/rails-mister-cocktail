@@ -1,17 +1,20 @@
 class CocktailsController < ApplicationController
+  # GET /cocktails
   def index
     @cocktails = Cocktail.all
   end
 
+  # GET /cocktails/1
+  def show
+    @cocktail = Cocktail.find(params[:id])
+  end
+
+  # GET /cocktails/new
   def new
     @cocktail = Cocktail.new
   end
 
-  def update
-    @cocktail.update(cocktail_params)
-    redirect_to cocktails_path
-  end
-
+  # POST /cocktails
   def create
     @cocktail = Cocktail.new(cocktail_params)
     if @cocktail.save
@@ -21,17 +24,9 @@ class CocktailsController < ApplicationController
     end
   end
 
-  def show
-    @cocktail = Cocktail.find(params[:id])
-  end
-
-  def destroy
-    @cocktail.destroy
-    redirect_to cocktails_path
-  end
-
   private
 
+  # Never trust parameters from the scary internet, only allow the white list through.
   def cocktail_params
     params.require(:cocktail).permit(:name)
   end
