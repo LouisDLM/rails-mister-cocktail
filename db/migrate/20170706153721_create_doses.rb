@@ -3,6 +3,7 @@ class CreateDoses < ActiveRecord::Migration[5.0]
     create_table :doses do |t|
       t.string :descritpion
 
+
       t.timestamps
     end
   end

@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
-  resources :cocktails do
-    # nested resources for :new, :create => restaurant id is needed to create a review
-    resources :doses, only: [ :name ]
+  get 'doses/create'
 
+  get 'doses/new'
 
+  get 'doses/destroy'
+
+  resources :cocktails, only: [:show, :index, :new, :create] do
+    resources :doses, only: [:create, :new]
   end
 
-  resources :doses
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :doses, only: [:destroy]
+  resources :ingredients, only: [:show]
+
+  root "cocktails#index"
+
 end
